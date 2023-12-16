@@ -1,9 +1,16 @@
+import {useState} from 'react';
 import { CORE_CONCEPTS } from './data.js';
 import Header from './components/Header/Header.jsx';
 import CoreConcept from './components/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
 
 function App() {
+  const [selectedTab, setSelectedTab] = useState('Click Tab To Show Information');
+
+  const tabBtnClickHandler = (tab)=>{
+    setSelectedTab(tab);
+    console.log(tab);
+  }
   return (
     <div>
       <Header />
@@ -24,13 +31,14 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton>Components</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton onTabSelect={()=>tabBtnClickHandler('components')}>Components</TabButton>
+            <TabButton onTabSelect={()=>tabBtnClickHandler('jsx')} >JSX</TabButton>
+            <TabButton onTabSelect={()=>tabBtnClickHandler('props')}>Props</TabButton>
+            <TabButton onTabSelect={()=>tabBtnClickHandler('state')}>State</TabButton>
           </menu>
         </section>
       </main>
+      {selectedTab}
     </div>
   );
 }
