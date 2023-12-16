@@ -1,16 +1,16 @@
 import {useState} from 'react';
 import { CORE_CONCEPTS } from './data.js';
+import {EXAMPLES} from './data.js';
 import Header from './components/Header/Header.jsx';
 import CoreConcept from './components/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
 
 function App() {
-  const [selectedTab, setSelectedTab] = useState('Click Tab To Show Information');
+  const [selectedTabTopic, setSelectedTabTopic] = useState('Click Tab To Show Information');
 
   const tabBtnClickHandler = (tab)=>{
-    setSelectedTab(tab);
-    console.log(tab);
-  }
+    setSelectedTabTopic(tab);
+      }
   return (
     <div>
       <Header />
@@ -36,9 +36,18 @@ function App() {
             <TabButton onTabSelect={()=>tabBtnClickHandler('props')}>Props</TabButton>
             <TabButton onTabSelect={()=>tabBtnClickHandler('state')}>State</TabButton>
           </menu>
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTabTopic].title}</h3>
+            <p>{EXAMPLES[selectedTabTopic].description}</p>
+            <pre>
+              <code>
+              {EXAMPLES[selectedTabTopic].code}
+              </code>
+            </pre>
+          </div>
         </section>
       </main>
-      {selectedTab}
+      
     </div>
   );
 }
