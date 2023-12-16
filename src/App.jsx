@@ -6,7 +6,7 @@ import CoreConcept from './components/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
 
 function App() {
-  const [selectedTabTopic, setSelectedTabTopic] = useState('Click Tab To Show Information');
+  const [selectedTabTopic, setSelectedTabTopic] = useState('components');
 
   const tabBtnClickHandler = (tab)=>{
     setSelectedTabTopic(tab);
