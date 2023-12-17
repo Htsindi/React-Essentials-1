@@ -6,11 +6,12 @@ import CoreConcept from './components/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
 
 function App() {
-  const [selectedTabTopic, setSelectedTabTopic] = useState('components');
+  const [selectedTabTopic, setSelectedTabTopic] = useState('');
 
   const tabBtnClickHandler = (tab)=>{
     setSelectedTabTopic(tab);
       }
+
   return (
     <div>
       <Header />
@@ -31,23 +32,23 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onTabSelect={()=>tabBtnClickHandler('components')}>Components</TabButton>
-            <TabButton onTabSelect={()=>tabBtnClickHandler('jsx')} >JSX</TabButton>
-            <TabButton onTabSelect={()=>tabBtnClickHandler('props')}>Props</TabButton>
-            <TabButton onTabSelect={()=>tabBtnClickHandler('state')}>State</TabButton>
+              <TabButton isSelected ={selectedTabTopic === 'components'} onTabSelect={()=>tabBtnClickHandler('components')}>Components</TabButton>
+              <TabButton isSelected ={selectedTabTopic === 'jsx'} onTabSelect={()=>tabBtnClickHandler('jsx')} >JSX</TabButton>
+              <TabButton isSelected ={selectedTabTopic === 'props'} onTabSelect={()=>tabBtnClickHandler('props')}>Props</TabButton>
+              <TabButton isSelected ={selectedTabTopic === 'state'} onTabSelect={()=>tabBtnClickHandler('state')}>State</TabButton>
           </menu>
           <div id="tab-content">
-            <h3>{EXAMPLES[selectedTabTopic].title}</h3>
-            <p>{EXAMPLES[selectedTabTopic].description}</p>
-            <pre>
-              <code>
-              {EXAMPLES[selectedTabTopic].code}
-              </code>
-            </pre>
+           {!selectedTabTopic ?<h3>Please Select a Tab to view content</h3> :  <div> <h3>{EXAMPLES[selectedTabTopic].title}</h3>
+  <p>{EXAMPLES[selectedTabTopic].description}</p>
+  <pre>
+    <code>
+    {EXAMPLES[selectedTabTopic].code}
+    </code>
+  </pre> </div> }
+           
           </div>
         </section>
-      </main>
-      
+      </main>  
     </div>
   );
 }
