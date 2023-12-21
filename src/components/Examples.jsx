@@ -40,19 +40,19 @@ export default function Examples(){
       </TabButton>
 
       <div id="tab-content">
-{!selectedTabTopic ? (
-<h3>Please Select a Tab to view content</h3>
-) : (
-<div>
-<h3>{EXAMPLES[selectedTabTopic].title}</h3>
-<p>{EXAMPLES[selectedTabTopic].description}</p>
-<pre>
-  <code>{EXAMPLES[selectedTabTopic].code}</code>
-</pre> </div>)}
-</div>
+        {!selectedTabTopic ? (
+        <h3>Please Select a Tab to view content</h3>
+        ) : (
+        <div>
+        <h3>{EXAMPLES[selectedTabTopic].title}</h3>
+        <p>{EXAMPLES[selectedTabTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTabTopic].code}</code>
+        </pre> </div>)}
+      </div>
 
       </div> } >
-{tabContent}
+  {tabContent}
 </Tabs>
 
 
