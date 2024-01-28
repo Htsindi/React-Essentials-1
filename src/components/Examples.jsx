@@ -1,20 +1,27 @@
 import { useState } from "react";
 import { EXAMPLES } from "../data.js";
-import TabButton from "../components/TabButton.jsx";
+import TabButton from "./TabButton.jsx";
 import Section from './Section.jsx'
 import Tabs from './Tabs.jsx'
 
 export default function Examples(){
-  const [selectedTabTopic, setSelectedTabTopic] = useState("");
+  const [selectedTabTopic, setSelectedTabTopic] = useState( );
+
+//function handleSelect(selectedButton){
+  // selectedButton => 'components', 'jsx', 'props', 'state'
+  //setSelectedTabTopic(selectedButton);
+  //console.log(selectedTabTopic);
+//}
 
   const tabBtnClickHandler = (tab) => {
     setSelectedTabTopic(tab);}
 
   return(
     <Section title='Examples' id="examples">
-      <Tabs button ={ 
-      <div>
-        <TabButton
+      
+      <Tabs ButtonsContainer='menu' button ={ 
+      <>
+        <TabButton 
         isSelected={selectedTabTopic === "components"}
         onClick={() => tabBtnClickHandler("components")}
       >
@@ -38,27 +45,22 @@ export default function Examples(){
         >
         State
       </TabButton>
-
-      <div id="tab-content">
-        {!selectedTabTopic ? (
-        <h3>Please Select a Tab to view content</h3>
-        ) : (
-        <div>
-        <h3>{EXAMPLES[selectedTabTopic].title}</h3>
-        <p>{EXAMPLES[selectedTabTopic].description}</p>
-        <pre>
-          <code>{EXAMPLES[selectedTabTopic].code}</code>
-        </pre> </div>)}
-      </div>
-
-      </div> } >
+      
+      </> } >
   {tabContent}
 </Tabs>
-
-
-
 </Section>
-  
 
-  )
+  //    <div id="tab-content">
+    //    {!selectedTabTopic ? (
+      //  <h3>Please Select a Tab to view content</h3>
+        //) : (
+        //<div>
+        //<h3>{EXAMPLES[selectedTabTopic].title}</h3>
+        //<p>{EXAMPLES[selectedTabTopic].description}</p>
+        //<pre>
+          //<code>{EXAMPLES[selectedTabTopic].code}</code>
+        //</pre> </div>)}
+      //</div>
+  );
 }
